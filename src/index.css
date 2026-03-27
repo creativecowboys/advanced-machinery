@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Navies */
+  --color-brand-navy: #144066;
+  --color-deep-navy: #113657;
+  --color-darker-navy: #103352;
+  --color-navy-shadow: #0f304d;
+  --color-midnight: #071826;
+
+  /* Accent Blue */
+  --color-action-blue: #315FC3;
+  --color-muted-blue: #8aa0b3;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-off-white: #F8F9FA;
+  --color-light-gray: #E9ECEF;
+  --color-mid-gray: #6C757D;
+  --color-dark-gray: #343A40;
+  --color-near-black: #212529;
+
+  /* Utility */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  --color-danger: #dc3545;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-near-black font-sans;
+  }
+}
+
+.btn-primary {
+  @apply bg-action-blue text-white font-bold py-3 px-8 uppercase tracking-wider hover:bg-darker-navy transition-colors duration-200;
+}
+
+.btn-outline {
+  @apply border-2 border-action-blue text-action-blue font-bold py-3 px-8 uppercase tracking-wider hover:bg-action-blue hover:text-white transition-colors duration-200;
+}
