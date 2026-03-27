@@ -230,8 +230,8 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                         : 'shadow-[0_8px_40px_rgba(0,0,0,0.35)]'
                         }`}
                 >
-                    <div className="pl-5 pr-3 shrink-0">
-                        <Search size={20} className={`transition-colors ${focused || expanded ? 'text-[#1E73C8]' : 'text-[#999]'}`} />
+                    <div className="pl-4 pr-2 shrink-0">
+                        <Search size={18} className={`transition-colors ${focused || expanded ? 'text-[#1E73C8]' : 'text-[#999]'}`} />
                     </div>
                     <input
                         ref={inputRef}
@@ -244,27 +244,27 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                         disabled={isStreaming}
                         placeholder={
                             expanded
-                                ? 'Ask a follow-up question...'
-                                : 'Ask anything — "I need a blade for cutting 18mm melamine..."'
+                                ? 'Ask a follow-up...'
+                                : 'Ask our AI — what tool do you need?'
                         }
-                        className="flex-1 bg-transparent py-5 px-2 text-[#1A1A1A] placeholder:text-[#BBB] text-base font-medium outline-none disabled:opacity-60"
+                        className="flex-1 min-w-0 bg-transparent py-4 px-2 text-[#1A1A1A] placeholder:text-[#BBB] text-sm sm:text-base font-medium outline-none disabled:opacity-60"
                     />
                     {expanded && (
                         <button
                             onClick={handleReset}
-                            className="mr-1 text-[#999] hover:text-[#1A1A1A] p-2 transition-colors"
+                            className="mr-1 text-[#999] hover:text-[#1A1A1A] p-2 transition-colors shrink-0"
                             title="Start over"
                         >
-                            <RotateCcw size={16} />
+                            <RotateCcw size={15} />
                         </button>
                     )}
                     <button
                         onClick={() => submitQuery(inputValue)}
                         disabled={!inputValue.trim() || isStreaming}
-                        className="m-2 bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-6 py-3.5 flex items-center gap-2 hover:bg-[#155fa0] transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                        className="m-2 bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-3 sm:px-6 py-3 sm:py-3.5 flex items-center gap-1.5 hover:bg-[#155fa0] transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
                     >
                         {expanded ? <Send size={14} /> : <Sparkles size={14} />}
-                        {expanded ? 'Send' : 'Ask AI'}
+                        <span className="hidden sm:inline">{expanded ? 'Send' : 'Ask AI'}</span>
                     </button>
                 </div>
 
