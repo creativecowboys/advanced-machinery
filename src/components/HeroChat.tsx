@@ -261,7 +261,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                     <button
                         onClick={() => submitQuery(inputValue)}
                         disabled={!inputValue.trim() || isStreaming}
-                        className="m-2 bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-3 sm:px-6 py-3 sm:py-3.5 flex items-center gap-1.5 hover:bg-[#155fa0] transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                        className="m-2 bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-3 sm:px-6 py-3 sm:py-3.5 flex items-center gap-1.5 hover:bg-[#155fa0] transition-colors disabled:opacity-60 disabled:cursor-not-allowed shrink-0"
                     >
                         {expanded ? <Send size={14} /> : <Sparkles size={14} />}
                         <span className="hidden sm:inline">{expanded ? 'Send' : 'Ask AI'}</span>
