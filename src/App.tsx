@@ -183,8 +183,8 @@ function AppInner() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#1A1A1A]">
-      {/* Top Utility Bar */}
-      <div className="bg-[#0F1F3A] text-white text-[10px] uppercase tracking-widest py-2 px-4 md:px-8 flex justify-between items-center border-b border-white/10">
+      {/* Top Utility Bar — hidden on mobile to save space */}
+      <div className="hidden sm:flex bg-[#0F1F3A] text-white text-[10px] uppercase tracking-widest py-2 px-4 md:px-8 justify-between items-center border-b border-white/10">
         <div className="flex gap-4">
           <span className="flex items-center gap-1"><Phone size={12} /> 801-498-7891</span>
           <span className="hidden md:flex items-center gap-1"><Mail size={12} /> office@advanced-machinery.com</span>
@@ -197,10 +197,10 @@ function AppInner() {
 
       {/* Main Header */}
       <header className="bg-[#1A2B4A] text-white sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center shrink-0">
-            <img src="/Advanced Machinery Logo.png" alt="Advanced Machinery Systems" className="h-10 w-auto" />
+            <img src="/Advanced Machinery Logo.png" alt="Advanced Machinery Systems" className="h-7 sm:h-9 md:h-10 w-auto" />
           </div>
 
           {/* Desktop Nav */}
@@ -290,7 +290,7 @@ function AppInner() {
       </header>
 
       {/* ── HERO SECTION ── */}
-      <section className="relative min-h-[720px] bg-[#0F1F3A] overflow-hidden flex items-center">
+      <section className="relative min-h-[600px] md:min-h-[720px] bg-[#0F1F3A] overflow-hidden flex items-center">
         {/* Background image — real shop floor */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30 scale-105"
@@ -305,32 +305,32 @@ function AppInner() {
           backgroundSize: '80px 80px'
         }} />
 
-        {/* Subtle text-area scrim — helps legibility without boxing the text */}
+        {/* Subtle text-area scrim */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full max-w-4xl h-full" style={{
             background: 'radial-gradient(ellipse 70% 65% at 50% 50%, rgba(15,31,58,0.72) 0%, transparent 100%)'
           }} />
         </div>
 
-        <div className="relative w-full max-w-4xl mx-auto px-4 md:px-8 py-20 flex flex-col items-center text-center">
+        <div className="relative w-full max-w-4xl mx-auto px-5 md:px-8 py-14 md:py-20 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 mb-6"
+            className="flex items-center gap-2 mb-5"
           >
-            <span className="w-8 h-px bg-[#2E6DB4]" />
-            <span className="text-[#2E6DB4] font-black uppercase tracking-[0.25em] text-xs">
+            <span className="w-6 h-px bg-[#2E6DB4] hidden sm:block" />
+            <span className="text-[#2E6DB4] font-black uppercase tracking-[0.15em] sm:tracking-[0.25em] text-[10px] sm:text-xs">
               Founded 1989 · Intermountain West · AI-Powered Search
             </span>
-            <span className="w-8 h-px bg-[#2E6DB4]" />
+            <span className="w-6 h-px bg-[#2E6DB4] hidden sm:block" />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="text-white text-5xl md:text-7xl font-black uppercase leading-[0.88] tracking-tighter mb-4"
+            className="text-white text-4xl sm:text-5xl md:text-7xl font-black uppercase leading-[0.88] tracking-tighter mb-4"
           >
             Your Partner In<br />
             <span className="text-[#2E6DB4]">Wood Manufacturing</span>
@@ -340,7 +340,7 @@ function AppInner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-white/50 text-base font-medium mb-10 max-w-xl"
+            className="text-white/50 text-sm sm:text-base font-medium mb-8 md:mb-10 max-w-xl px-2 sm:px-0"
           >
             35+ years of woodworking machinery expertise. From CNC routers to precision tooling — we deliver solutions that maximize your productivity and profitability.
           </motion.p>
@@ -352,31 +352,31 @@ function AppInner() {
       </section>
 
       {/* ── VALUE PROPS BAR ── */}
-      <div className="bg-[#1A2B4A] text-white py-6 border-b-4 border-[#0F1F3A]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="flex items-center gap-4">
-            <Star size={36} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
+      <div className="bg-[#1A2B4A] text-white py-5 md:py-6 border-b-4 border-[#0F1F3A]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
+          <div className="flex items-center gap-3">
+            <Star size={28} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
             <div>
               <h3 className="font-black uppercase text-sm leading-none">35+ Years</h3>
               <p className="text-xs font-bold opacity-70 uppercase">of Wood Mfg. Expertise</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Wrench size={36} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
+          <div className="flex items-center gap-3">
+            <Wrench size={28} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
             <div>
               <h3 className="font-black uppercase text-sm leading-none">6 Field Reps</h3>
               <p className="text-xs font-bold opacity-70 uppercase">On-site Service & Support</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Settings2 size={36} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
+          <div className="flex items-center gap-3">
+            <Settings2 size={28} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
             <div>
               <h3 className="font-black uppercase text-sm leading-none">Machinery & Tooling</h3>
               <p className="text-xs font-bold opacity-70 uppercase">One Complete Partner</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <MapPin size={36} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
+          <div className="flex items-center gap-3">
+            <MapPin size={28} strokeWidth={1.5} className="text-[#2E6DB4] shrink-0" />
             <div>
               <h3 className="font-black uppercase text-sm leading-none">Intermountain West</h3>
               <p className="text-xs font-bold opacity-70 uppercase">UT · ID · MT · WY · AZ · CO</p>
@@ -386,12 +386,12 @@ function AppInner() {
       </div>
 
       {/* ── OUR SOLUTIONS ── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Our Solutions</h2>
+          <div className="text-center mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Our Solutions</h2>
             <div className="h-1 w-20 bg-[#2E6DB4] mt-3 mx-auto" />
-            <p className="text-[#777] mt-4 max-w-xl mx-auto font-medium">
+            <p className="text-[#777] mt-4 max-w-xl mx-auto font-medium text-sm md:text-base">
               Advanced Machinery Systems delivers everything your wood manufacturing operation needs to succeed.
             </p>
           </div>
@@ -449,11 +449,11 @@ function AppInner() {
       </section>
 
       {/* ── MACHINERY CATEGORIES ── */}
-      <section className="py-20 bg-[#F5F6F8]">
+      <section className="py-12 md:py-20 bg-[#F5F6F8]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex justify-between items-end mb-8 md:mb-12">
             <div>
-              <h2 className="text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Industrial Machinery</h2>
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Industrial Machinery</h2>
               <div className="h-1 w-20 bg-[#2E6DB4] mt-2" />
             </div>
             <button
@@ -513,8 +513,8 @@ function AppInner() {
       </section>
 
       {/* ── FLAGSHIP: CNC ROUTERS ── */}
-      <section className="bg-[#0F1F3A] text-white py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="bg-[#0F1F3A] text-white py-12 md:py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="relative">
             <div className="absolute -top-10 -left-10 w-60 h-60 bg-[#2E6DB4]/10 rounded-full blur-3xl" />
             <div className="relative z-10 overflow-hidden aspect-[4/3] border border-white/10">
@@ -538,9 +538,9 @@ function AppInner() {
               <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#2E6DB4] pointer-events-none" />
             </div>
           </div>
-          <div>
+          <div className="mt-2 md:mt-0">
             <span className="text-[#2E6DB4] font-black uppercase tracking-widest text-sm mb-4 block">Featured Machinery</span>
-            <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none mb-5 md:mb-6">
               Homag Centateq<br />
               <span className="text-[#2E6DB4]">CNC Routers</span>
             </h2>
@@ -573,11 +573,11 @@ function AppInner() {
       </section>
 
       {/* ── TOOLING CATEGORIES ── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex justify-between items-end mb-8 md:mb-12">
             <div>
-              <h2 className="text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Shop Tooling</h2>
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Shop Tooling</h2>
               <div className="h-1 w-20 bg-[#2E6DB4] mt-2" />
             </div>
             <button
@@ -646,13 +646,13 @@ function AppInner() {
       </section>
 
       {/* ── INDUSTRIES ── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Industries We Serve</h2>
+          <div className="text-center mb-8 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">Industries We Serve</h2>
             <div className="h-1 w-20 bg-[#2E6DB4] mt-3 mx-auto" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {([
               { name: 'Cabinets & Closets', Icon: CabinetsIcon },
               { name: 'Construction', Icon: ConstructionIcon },
@@ -666,10 +666,10 @@ function AppInner() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="flex flex-col items-center text-center p-6 bg-[#F7F8FA] border border-[#E8EAED] hover:border-[#2E6DB4] hover:shadow-md transition-all group"
+                className="flex flex-col items-center text-center p-3 md:p-6 bg-[#F7F8FA] border border-[#E8EAED] hover:border-[#2E6DB4] hover:shadow-md transition-all group"
               >
-                <industry.Icon size={44} className="text-[#2E6DB4] mb-3 group-hover:text-[#1a4f8a] transition-colors" />
-                <h3 className="text-xs font-black uppercase tracking-wide text-[#1A1A1A] group-hover:text-[#2E6DB4] transition-colors leading-tight">{industry.name}</h3>
+                <industry.Icon size={32} className="text-[#2E6DB4] mb-2 md:mb-3 group-hover:text-[#1a4f8a] transition-colors md:size-[44px]" />
+                <h3 className="text-[10px] md:text-xs font-black uppercase tracking-wide text-[#1A1A1A] group-hover:text-[#2E6DB4] transition-colors leading-tight">{industry.name}</h3>
               </motion.div>
             ))}
           </div>
@@ -677,13 +677,13 @@ function AppInner() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-20 bg-[#0F1F3A] text-white">
+      <section className="py-12 md:py-20 bg-[#0F1F3A] text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-black uppercase tracking-tighter">What Our Partners Say</h2>
+          <div className="text-center mb-8 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">What Our Partners Say</h2>
             <div className="h-1 w-20 bg-[#2E6DB4] mt-3 mx-auto" />
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-5 md:gap-8">
             {[
               {
                 quote: "Advanced Machinery has been our go-to resource for over 15 years. Their service team responds quickly and knows our machines better than anyone. An indispensable partner for our shop.",
@@ -698,9 +698,9 @@ function AppInner() {
                 location: "Boise, ID",
               },
             ].map((t, i) => (
-              <div key={i} className="bg-[#1A2B4A] p-10 border-l-4 border-[#2E6DB4] relative">
-                <div className="absolute top-6 right-8 text-[#2E6DB4]/20 text-8xl font-black leading-none">"</div>
-                <p className="text-lg italic font-medium mb-8 text-white/80 leading-relaxed relative z-10">"{t.quote}"</p>
+              <div key={i} className="bg-[#1A2B4A] p-6 md:p-10 border-l-4 border-[#2E6DB4] relative overflow-hidden">
+                <div className="absolute top-4 right-5 text-[#2E6DB4]/20 text-7xl md:text-8xl font-black leading-none pointer-events-none">"</div>
+                <p className="text-base md:text-lg italic font-medium mb-6 md:mb-8 text-white/80 leading-relaxed relative z-10">"{t.quote}"</p>
                 <div>
                   <h4 className="font-black uppercase text-base text-white">{t.author}</h4>
                   <p className="text-sm font-bold text-[#2E6DB4] uppercase tracking-wide">{t.segment}</p>
@@ -715,15 +715,15 @@ function AppInner() {
       </section>
 
       {/* ── SERVICE CTA ── */}
-      <section className="py-20 bg-[#2E6DB4] text-white">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6">
+      <section className="py-12 md:py-20 bg-[#2E6DB4] text-white">
+        <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6">
             Need Machine Service<br />or a Quote?
           </h2>
-          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto font-medium">
+          <p className="text-white/80 text-sm md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto font-medium">
             Our 6 specialist field service reps cover the entire Intermountain West. Reach out and we'll connect you with the right expert for your operation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a
               href="mailto:office@advanced-machinery.com"
               className="bg-white text-[#2E6DB4] font-black uppercase text-sm tracking-widest px-8 py-4 hover:bg-[#F0F4FF] transition-colors inline-flex items-center justify-center gap-2"
@@ -744,9 +744,9 @@ function AppInner() {
       <CartDrawer />
 
       {/* ── FOOTER ── */}
-      <footer className="bg-[#0F1F3A] text-white pt-20 pb-10">
+      <footer className="bg-[#0F1F3A] text-white pt-12 md:pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
             <div>
               <div className="flex flex-col items-start mb-6">
                 <img src="/Advanced Machinery Logo.png" alt="Advanced Machinery Systems" className="h-10 w-auto" />
