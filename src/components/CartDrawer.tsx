@@ -8,12 +8,12 @@ export default function CartDrawer() {
     // Build mailto body with cart items
     function buildMailtoHref() {
         const lines = cartItems.map(i =>
-            `• ${i.product.name} (x${i.quantity}) — ${i.product.price}`
+            `• ${i.product.name} (qty: ${i.quantity})${i.product.price !== 'Contact for Price' ? ' — ' + i.product.price : ''}`
         ).join('\n');
         const body = encodeURIComponent(
-            `Hello,\n\nI'd like to request a quote for the following items:\n\n${lines}\n\nSubtotal: ${cartTotal}\n\nPlease contact me with pricing and availability.\n\nThank you.`
+            `Hello,\n\nI'd like to request a quote for the following items:\n\n${lines}\n\nPlease contact me with pricing and availability.\n\nThank you.`
         );
-        return `mailto:Sales@carbidetooling.net?subject=Quote%20Request%20from%20CarbideTooling.net&body=${body}`;
+        return `mailto:office@advanced-machinery.com?subject=Quote%20Request%20-%20Advanced%20Machinery%20Systems&body=${body}`;
     }
 
     return (
@@ -42,9 +42,9 @@ export default function CartDrawer() {
                             <div className="flex items-center gap-3">
                                 <ShoppingCart size={20} />
                                 <div>
-                                    <p className="font-black uppercase text-sm tracking-wide leading-none">Your Cart</p>
+                                    <p className="font-black uppercase text-sm tracking-wide leading-none">Quote Request</p>
                                     <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest mt-0.5">
-                                        {cartCount} {cartCount === 1 ? 'item' : 'items'}
+                                        {cartCount} {cartCount === 1 ? 'item' : 'items'} selected
                                     </p>
                                 </div>
                             </div>
@@ -64,9 +64,9 @@ export default function CartDrawer() {
                                     <div className="w-20 h-20 bg-[#F7F7F7] flex items-center justify-center">
                                         <ShoppingCart size={32} className="text-[#CCC]" />
                                     </div>
-                                    <p className="font-black uppercase text-[#1A1A1A] text-sm tracking-wide">Your cart is empty</p>
-                                    <p className="text-[#999] text-sm">Ask the AI assistant to help you find the right tooling.</p>
-                                    <button onClick={closeCart} className="bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-6 py-3 hover:bg-[#155fa0] transition-colors">
+                                    <p className="font-black uppercase text-[#1A1A1A] text-sm tracking-wide">No items added yet</p>
+                                    <p className="text-[#999] text-sm">Browse our machinery and tooling, then add items you'd like a quote on.</p>
+                                    <button onClick={closeCart} className="bg-[#2E6DB4] text-white font-black uppercase text-xs tracking-widest px-6 py-3 hover:bg-[#1a4f8a] transition-colors">
                                         Browse Products
                                     </button>
                                 </div>
@@ -141,16 +141,16 @@ export default function CartDrawer() {
                                     <span className="font-black text-xl text-[#1A1A1A]">{cartTotal}</span>
                                 </div>
                                 <p className="text-[10px] text-[#999] font-medium">
-                                    Final pricing subject to availability and volume. Request a quote for exact pricing.
+                                    Add any items you're interested in, then click below to send us a quote request.
                                 </p>
 
                                 {/* CTA */}
                                 <a
                                     href={buildMailtoHref()}
-                                    className="flex items-center justify-center gap-2 bg-[#1E73C8] text-white font-black uppercase text-sm tracking-widest py-4 w-full hover:bg-[#155fa0] transition-colors"
+                                    className="flex items-center justify-center gap-2 bg-[#2E6DB4] text-white font-black uppercase text-sm tracking-widest py-4 w-full hover:bg-[#1a4f8a] transition-colors"
                                 >
                                     <Mail size={16} />
-                                    Request a Quote
+                                    Get a Quote
                                 </a>
                                 <button
                                     onClick={clearCart}

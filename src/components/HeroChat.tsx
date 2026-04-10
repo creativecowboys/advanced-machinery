@@ -18,11 +18,11 @@ interface DisplayMessage {
 // ─── Suggestion Pills ───────────────────────────────────────────────────────
 
 const PILLS = [
-    { label: 'Melamine saw blade', query: 'What saw blade do I need for cutting melamine panels?' },
-    { label: 'PCD diamond tools', query: 'Tell me about your PCD diamond tooling options' },
-    { label: 'Biesse edgebander bits', query: 'I need edgebander tooling for a Biesse machine' },
-    { label: 'CNC compression bits', query: 'What CNC compression router bits do you carry?' },
-    { label: 'Metric boring bits', query: 'What metric boring bits do you stock?' },
+    { label: 'Find a CNC router', query: 'What CNC routers do you carry and who are they best for?' },
+    { label: 'CNC router bits', query: 'What CNC compression router bits do you stock?' },
+    { label: 'Edgebander tooling', query: 'I need edgebander tooling — what do you carry?' },
+    { label: 'SawStop table saws', query: 'Tell me about your SawStop table saw options' },
+    { label: 'Request service quote', query: 'I need service on my woodworking machinery — how do I get a quote?' },
 ];
 
 // ─── Product Card ───────────────────────────────────────────────────────────
@@ -46,21 +46,23 @@ function ProductCard({ productId, onOpen }: { productId: string; onOpen: (p: Pro
                 )}
             </div>
             <div className="flex-1 min-w-0">
-                <p className="text-white text-xs font-bold uppercase truncate group-hover:text-[#1E73C8] transition-colors">{product.name}</p>
-                <p className="text-[#1E73C8] text-xs font-black">
-                    {product.price}{product.priceFrom && '+'}
+                <p className="text-white text-xs font-bold uppercase truncate group-hover:text-[#2E6DB4] transition-colors">{product.name}</p>
+                <p className="text-[#2E6DB4] text-xs font-black">
+                    {product.requestQuote ? 'Request Quote' : `${product.priceFrom ? 'From ' : ''}${product.price}`}
                 </p>
             </div>
-            <button
-                onClick={e => { e.stopPropagation(); addToCart(product.id); }}
-                className={`shrink-0 w-7 h-7 flex items-center justify-center rounded-sm transition-all ${inCart
-                    ? 'bg-green-500 text-white'
-                    : 'bg-[#1E73C8] text-white hover:bg-[#155fa0]'
-                    }`}
-                title={inCart ? 'In cart' : 'Add to cart'}
-            >
-                {inCart ? <Check size={13} strokeWidth={3} /> : <ShoppingCart size={13} />}
-            </button>
+            {!product.requestQuote && (
+                <button
+                    onClick={e => { e.stopPropagation(); addToCart(product.id); }}
+                    className={`shrink-0 w-7 h-7 flex items-center justify-center rounded-sm transition-all ${inCart
+                        ? 'bg-green-500 text-white'
+                        : 'bg-[#2E6DB4] text-white hover:bg-[#1a4f8a]'
+                        }`}
+                    title={inCart ? 'In cart' : 'Add to cart'}
+                >
+                    {inCart ? <Check size={13} strokeWidth={3} /> : <ShoppingCart size={13} />}
+                </button>
+            )}
         </motion.div>
     );
 }
@@ -80,15 +82,15 @@ function AIMessage({ msg, onOpen }: { msg: DisplayMessage; onOpen: (p: Product) 
             className="flex flex-col gap-3"
         >
             <div className="flex items-start gap-2">
-                <div className="shrink-0 mt-0.5 w-6 h-6 bg-[#1E73C8] rounded-full flex items-center justify-center">
+                <div className="shrink-0 mt-0.5 w-6 h-6 bg-[#2E6DB4] rounded-full flex items-center justify-center">
                     <Sparkles size={12} className="text-white" />
                 </div>
                 <div className="flex-1">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#1E73C8] mb-1">Tooling Assistant</p>
+                    <p className="text-xs font-black uppercase tracking-widest text-[#2E6DB4] mb-1">Advanced Machinery AI</p>
                     <p className="text-white/90 text-sm leading-relaxed whitespace-pre-wrap">
                         {cleanText}
                         {msg.streaming && (
-                            <span className="inline-block w-1.5 h-4 bg-[#1E73C8] ml-0.5 animate-pulse align-middle" />
+                            <span className="inline-block w-1.5 h-4 bg-[#2E6DB4] ml-0.5 animate-pulse align-middle" />
                         )}
                     </p>
                 </div>
@@ -226,12 +228,12 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                 {/* ── Search / Input Bar ── */}
                 <div
                     className={`flex items-center bg-white transition-all duration-200 ${focused || expanded
-                        ? 'shadow-[0_0_0_3px_rgba(30,115,200,0.5),0_20px_60px_rgba(0,0,0,0.4)]'
+                        ? 'shadow-[0_0_0_3px_rgba(46,109,180,0.5),0_20px_60px_rgba(0,0,0,0.4)]'
                         : 'shadow-[0_8px_40px_rgba(0,0,0,0.35)]'
                         }`}
                 >
                     <div className="pl-4 pr-2 shrink-0">
-                        <Search size={18} className={`transition-colors ${focused || expanded ? 'text-[#1E73C8]' : 'text-[#999]'}`} />
+                        <Search size={18} className={`transition-colors ${focused || expanded ? 'text-[#2E6DB4]' : 'text-[#999]'}`} />
                     </div>
                     <input
                         ref={inputRef}
@@ -245,7 +247,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                         placeholder={
                             expanded
                                 ? 'Ask a follow-up...'
-                                : 'Ask our AI — what tool do you need?'
+                                : 'Ask about machinery or tooling — what do you need?'
                         }
                         className="flex-1 min-w-0 bg-transparent py-4 px-2 text-[#1A1A1A] placeholder:text-[#BBB] text-sm sm:text-base font-medium outline-none disabled:opacity-60"
                     />
@@ -261,7 +263,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                     <button
                         onClick={() => submitQuery(inputValue)}
                         disabled={!inputValue.trim() || isStreaming}
-                        className="m-2 bg-[#1E73C8] text-white font-black uppercase text-xs tracking-widest px-3 sm:px-6 py-3 sm:py-3.5 flex items-center gap-1.5 hover:bg-[#155fa0] transition-colors disabled:cursor-not-allowed shrink-0"
+                        className="m-2 bg-[#2E6DB4] text-white font-black uppercase text-xs tracking-widest px-3 sm:px-6 py-3 sm:py-3.5 flex items-center gap-1.5 hover:bg-[#1a4f8a] transition-colors disabled:cursor-not-allowed shrink-0"
                     >
                         {expanded ? <Send size={14} /> : <Sparkles size={14} />}
                         <span className="hidden sm:inline">{expanded ? 'Send' : 'Ask AI'}</span>
@@ -303,9 +305,9 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                             {/* Thread header */}
                             <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10">
                                 <div className="flex items-center gap-2">
-                                    <Sparkles size={13} className="text-[#1E73C8]" />
+                                    <Sparkles size={13} className="text-[#2E6DB4]" />
                                     <span className="text-[10px] font-black uppercase tracking-widest text-white/50">
-                                        Tooling Assistant · CarbideTooling.net AI
+                                        Advanced Machinery AI · Product & Machinery Specialist
                                     </span>
                                 </div>
                                 <button
@@ -325,7 +327,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                                             key={`usr-${i}`}
                                             initial={{ opacity: 0, x: 10 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            className="self-end ml-auto max-w-[80%] bg-[#1E73C8] text-white px-4 py-2.5 text-sm font-medium rounded-sm text-left"
+                                            className="self-end ml-auto max-w-[80%] bg-[#2E6DB4] text-white px-4 py-2.5 text-sm font-medium rounded-sm text-left"
                                         >
                                             {msg.text}
                                         </motion.div>
@@ -339,7 +341,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
 
                             {/* Footer */}
                             <div className="flex items-center justify-between px-4 py-2.5 border-t border-white/10">
-                                <p className="text-[10px] text-white/30 font-medium">Powered by Tool Lasso AI</p>
+                                <p className="text-[10px] text-white/30 font-medium">Powered by Advanced Machinery AI</p>
                                 <button
                                     onClick={handleReset}
                                     className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors"
@@ -354,7 +356,7 @@ export default function HeroChat({ initialQuery, onQueryConsumed }: HeroChatProp
                 {/* Subtext when collapsed */}
                 {!expanded && (
                     <p className="text-center text-white/40 text-xs font-medium mt-4 tracking-wide">
-                        Powered by Tool Lasso AI · Ask in plain English
+                        Powered by Advanced Machinery AI · Ask about machinery, tooling, or service
                     </p>
                 )}
             </motion.div>

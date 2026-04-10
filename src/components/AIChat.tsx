@@ -17,7 +17,7 @@ function ChatProductCard({ product, onAddToCart }: { product: Product; key?: str
     const { isInCart } = useCart();
     const inCart = isInCart(product.id);
     return (
-        <div className="flex items-center gap-3 bg-white border border-[#E0E0E0] p-3 hover:border-[#1E73C8] hover:shadow-md transition-all group">
+        <div className="flex items-center gap-3 bg-white border border-[#E0E0E0] p-3 hover:border-[#2E6DB4] hover:shadow-md transition-all group">
             <a
                 href={product.url}
                 target="_blank"
@@ -33,10 +33,10 @@ function ChatProductCard({ product, onAddToCart }: { product: Product; key?: str
                     />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-black uppercase text-[#1A1A1A] leading-tight line-clamp-2 group-hover:text-[#1E73C8] transition-colors">
+                    <p className="text-[11px] font-black uppercase text-[#1A1A1A] leading-tight line-clamp-2 group-hover:text-[#2E6DB4] transition-colors">
                         {product.name}
                     </p>
-                    <p className="text-[11px] font-bold text-[#1E73C8] mt-0.5">
+                    <p className="text-[11px] font-bold text-[#2E6DB4] mt-0.5">
                         {product.priceFrom ? 'From ' : ''}{product.price}
                     </p>
                 </div>
@@ -46,7 +46,7 @@ function ChatProductCard({ product, onAddToCart }: { product: Product; key?: str
                 onClick={() => onAddToCart(product.id)}
                 className={`shrink-0 w-8 h-8 flex items-center justify-center transition-all ${inCart
                     ? 'bg-green-500 text-white'
-                    : 'bg-[#1A2947] text-white hover:bg-[#1E73C8]'
+                    : 'bg-[#1A2B4A] text-white hover:bg-[#2E6DB4]'
                     }`}
                 title={inCart ? 'In cart' : 'Add to cart'}
             >
@@ -105,13 +105,13 @@ export interface AIChatHandle {
 }
 
 const SUGGESTIONS = [
-    'What saw blade do I need for melamine panels?',
-    'Tell me about PCD diamond tooling',
-    'What CNC router bits do you carry?',
-    'I need edgebander tooling for a Biesse machine',
+    'What CNC router do you recommend for cabinets?',
+    'What edgebander tooling do you carry?',
+    'I need CNC router bits for MDF cutting',
+    'Tell me about your service coverage area',
 ];
 
-const WELCOME = "Hi! I'm your CarbideTooling.net product specialist. Ask me anything about our tooling — I can help you find the right saw blade, CNC bit, edgebander tooling, and more. I can even add items to your cart when you're ready to order. What are you working on?";
+const WELCOME = "Hi! I'm your Advanced Machinery Systems AI specialist. I can help you find the right woodworking machinery, tooling, or service solution. Ask me about CNC routers, edgebanders, router bits, saw blades, or anything else — what are you working on?";
 
 const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
     const [open, setOpen] = useState(false);
@@ -236,12 +236,12 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         onClick={() => setOpen(true)}
-                        className="hidden md:flex fixed bottom-6 right-6 z-50 bg-[#1A2947] text-white w-16 h-16 rounded-full shadow-2xl items-center justify-center hover:bg-[#1E73C8] transition-colors group"
+                        className="hidden md:flex fixed bottom-6 right-6 z-50 bg-[#1A2B4A] text-white w-16 h-16 rounded-full shadow-2xl items-center justify-center hover:bg-[#2E6DB4] transition-colors group"
                         aria-label="Open AI product search"
                     >
                         <div className="relative">
                             <MessageSquare size={26} />
-                            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#1E73C8] group-hover:bg-white rounded-full animate-pulse" />
+                            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#2E6DB4] group-hover:bg-white rounded-full animate-pulse" />
                         </div>
                     </motion.button>
                 )}
@@ -255,21 +255,21 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 40, scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                        className="hidden md:flex fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-2rem)] flex-col bg-white shadow-2xl border border-[#E0E0E0]"
+                        className="hidden md:flex fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-2rem)] flex-col bg-white shadow-2xl border border-[#E0E0E0] rounded-none"
                         style={{ height: 'min(640px, calc(100vh - 100px))' }}
                     >
                         {/* Header */}
-                        <div className="bg-[#1A2947] text-white px-5 py-4 flex items-center justify-between shrink-0">
+                        <div className="bg-[#1A2B4A] text-white px-5 py-4 flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="relative">
-                                    <div className="w-9 h-9 bg-[#1E73C8] flex items-center justify-center">
+                                    <div className="w-9 h-9 bg-[#2E6DB4] flex items-center justify-center">
                                         <Sparkles size={18} />
                                     </div>
                                     <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#1A2947]" />
                                 </div>
                                 <div>
-                                    <p className="font-black uppercase text-sm tracking-wide leading-none">Tooling Assistant</p>
-                                    <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest mt-0.5">CarbideTooling.net · AI</p>
+                                    <p className="font-black uppercase text-sm tracking-wide leading-none">Machinery AI</p>
+                                    <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest mt-0.5">Advanced Machinery Systems · AI</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -281,7 +281,7 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                                 >
                                     <ShoppingCart size={16} />
                                     {cartCount > 0 && (
-                                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#1E73C8] rounded-full text-[9px] font-black flex items-center justify-center">
+                                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#2E6DB4] rounded-full text-[9px] font-black flex items-center justify-center">
                                             {cartCount}
                                         </span>
                                     )}
@@ -308,16 +308,16 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                             {messages.map((msg) => (
                                 <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                                     {msg.role === 'user' ? (
-                                        <div className="bg-[#1A2947] text-white px-4 py-2.5 max-w-[85%] text-sm font-medium leading-relaxed">
+                                        <div className="bg-[#1A2B4A] text-white px-4 py-2.5 max-w-[85%] text-sm font-medium leading-relaxed">
                                             {msg.text}
                                         </div>
                                     ) : (
                                         <div className="max-w-[92%] space-y-3">
                                             <div className="flex items-center gap-1.5 mb-1">
-                                                <div className="w-5 h-5 bg-[#1E73C8] flex items-center justify-center">
+                                                <div className="w-5 h-5 bg-[#2E6DB4] flex items-center justify-center">
                                                     <Sparkles size={11} className="text-white" />
                                                 </div>
-                                                <span className="text-[10px] font-black uppercase tracking-widest text-[#999]">Tooling AI</span>
+                                                <span className="text-[10px] font-black uppercase tracking-widest text-[#999]">Advanced Machinery AI</span>
                                             </div>
 
                                             {(msg.text || msg.streaming) && (
@@ -325,7 +325,7 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                                                     {msg.text ? <MessageText text={msg.text} /> : null}
                                                     {msg.streaming && (
                                                         <span className="inline-flex items-center gap-1 ml-1">
-                                                            <span className="w-1 h-3 bg-[#1E73C8] animate-pulse inline-block" />
+                                                            <span className="w-1 h-3 bg-[#2E6DB4] animate-pulse inline-block" />
                                                         </span>
                                                     )}
                                                 </div>
@@ -371,7 +371,7 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                                         key={s}
                                         onClick={() => handleSend(s)}
                                         disabled={loading}
-                                        className="text-[11px] font-bold bg-[#F0F4FF] border border-[#C8D8F0] text-[#1A2947] px-3 py-1.5 hover:bg-[#1E73C8] hover:text-white hover:border-[#1E73C8] transition-colors disabled:opacity-40"
+                                        className="text-[11px] font-bold bg-[#EEF4FB] border border-[#BDD0EB] text-[#1A2B4A] px-3 py-1.5 hover:bg-[#2E6DB4] hover:text-white hover:border-[#2E6DB4] transition-colors disabled:opacity-40"
                                     >
                                         {s}
                                     </button>
@@ -394,13 +394,13 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
                                 placeholder="Ask about tooling, or say 'add to cart'..."
-                                className="flex-1 text-sm bg-[#F7F7F7] border border-[#E0E0E0] px-4 py-2.5 outline-none focus:ring-2 focus:ring-[#1E73C8] focus:border-transparent placeholder:text-[#BBB] font-medium"
+                                className="flex-1 text-sm bg-[#F7F7F7] border border-[#E0E0E0] px-4 py-2.5 outline-none focus:ring-2 focus:ring-[#2E6DB4] focus:border-transparent placeholder:text-[#BBB] font-medium"
                                 disabled={loading}
                             />
                             <button
                                 onClick={() => handleSend()}
                                 disabled={loading || !input.trim()}
-                                className="w-11 h-11 bg-[#1A2947] text-white flex items-center justify-center hover:bg-[#1E73C8] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                                className="w-11 h-11 bg-[#1A2B4A] text-white flex items-center justify-center hover:bg-[#2E6DB4] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
                             >
                                 {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
                             </button>
@@ -409,7 +409,7 @@ const AIChat = forwardRef<AIChatHandle>(function AIChat(_props, ref) {
                         {/* Footer */}
                         <div className="px-4 py-2 bg-[#F7F7F7] border-t border-[#E8E8E8] shrink-0">
                             <p className="text-[10px] text-[#BBB] font-bold uppercase tracking-widest text-center">
-                                Powered by Gemini AI · CarbideTooling.net
+                                Powered by Gemini AI · Advanced Machinery Systems
                             </p>
                         </div>
                     </motion.div>
