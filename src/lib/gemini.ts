@@ -1,7 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 import { categories } from '../data/products';
 
-const API_KEY = process.env.GEMINI_API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
 
 // Build a compact product catalog string for the system prompt
 function buildCatalogContext(): string {
@@ -70,7 +70,7 @@ export interface ChatMessage {
 let genAI: GoogleGenAI | null = null;
 
 function getClient(): GoogleGenAI {
-    if (!API_KEY) throw new Error('GEMINI_API_KEY is not set. Please create a .env file with your key.');
+    if (!API_KEY) throw new Error('VITE_GEMINI_API_KEY is not set. Add it to your .env file as VITE_GEMINI_API_KEY=your_key');
     if (!genAI) genAI = new GoogleGenAI({ apiKey: API_KEY });
     return genAI;
 }
